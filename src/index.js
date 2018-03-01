@@ -1,34 +1,20 @@
+
+
 module.exports = function check(str, bracketsConfig) {
-var b = str;
-console.log(b);
-//console.log(b.length);
-//console.log(bracketsConfig);
-b = b.split('');
-var count = 0;
-for (var i = 0; i < b.length; i++){
-  if (b[i] === '5') {
-    count++
-  }
-}
-    console.log(count)
-
-var c = b.length
-while (c>1) {
+  var b = str;
+  b = b.split('');
+  var c = b.length
+  while (c>1) {
   for (var i = 0; i < b.length; i++){
-    if ((b[i] === "(" && b[i+1] === ")")
-    || (b[i] === "[" && b[i+1] === "]")
-    || (b[i] === "{" && b[i+1] ==="}")
-    || (b[i] === "|" && b[i+1] ==="|")
-    || Number(b[i]) && b[i] ==  b[i+1])
-    b.splice(i,2)
-    }
-
-    c--
-    var x = b.join("");
-    console.log(x);
+  for (var j = 0; j < bracketsConfig.length; j++){
+  if ((b[i] === bracketsConfig[j][0]) && (b[i+1] === bracketsConfig[j][1])){
+  b.splice(i,2)
   }
-
-if (b.length== 0) {console.log("true"); return true}
-console.log("false");
-return false
-}
+  }
+  }
+  c=c-2
+  var x = b.join("");
+  if (b.length == 0) {return true}
+  }
+  return false
+  }
